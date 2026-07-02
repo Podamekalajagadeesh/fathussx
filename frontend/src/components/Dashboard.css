@@ -1,0 +1,107 @@
+/* frontend/src/components/Dashboard.css */
+
+.dashboard-container {
+  width: 100%;
+}
+
+.dashboard-header {
+  margin-bottom: var(--spacing-5);
+  text-align: left;
+}
+
+.dashboard-header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+/* Use design tokens for better rhythm */
+.dashboard-header h1 {
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-4);
+}
+
+.dashboard-widget {
+  /* This class is used with the global .card class */
+  text-align: left;
+}
+
+.dashboard-widget h2 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: var(--spacing-3);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-2);
+}
+
+.empty-state {
+  padding: var(--spacing-5);
+  text-align: center;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-4);
+}
+
+/* Skeleton loader styles */
+.skeleton-item {
+  margin-bottom: var(--spacing-4);
+}
+.skeleton-line {
+  height: 12px;
+  background: linear-gradient(90deg, var(--color-border), rgba(0,0,0,0.03), var(--color-border));
+  border-radius: 6px;
+  margin-bottom: var(--spacing-3);
+  animation: shimmer 1.2s infinite linear;
+}
+.skeleton-line.title { height: 18px; width: 60%; }
+.skeleton-line.bar { height: 16px; width: 100%; }
+.skeleton-line.meta { height: 12px; width: 40%; }
+.skeleton-line.text { height: 12px; width: 80%; }
+
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
+}
+
+.progress-list .progress-item {
+  margin-bottom: var(--spacing-4);
+}
+
+.progress-item:last-child {
+  margin-bottom: 0;
+}
+
+.progress-item h3 {
+  margin: 0 0 var(--spacing-2) 0;
+  font-size: 1.1rem;
+}
+
+.progress-bar-container {
+  width: 100%;
+  background-color: var(--color-border);
+  border-radius: 8px;
+  height: 20px;
+  overflow: hidden;
+  margin-bottom: var(--spacing-2);
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--color-primary);
+  border-radius: 8px;
+  transition: width 0.5s ease-in-out;
+}
+
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}

@@ -1,0 +1,11 @@
+CREATE TABLE jobs (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
+  company VARCHAR(255) NOT NULL,
+  location VARCHAR(255),
+  requirements TEXT,
+  status VARCHAR(50) DEFAULT 'open',
+  employer_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);

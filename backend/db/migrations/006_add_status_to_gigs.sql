@@ -1,0 +1,1 @@
+ALTER TABLE gigs ADD COLUMN status VARCHAR(255) DEFAULT 'open';

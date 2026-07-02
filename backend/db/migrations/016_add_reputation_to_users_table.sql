@@ -1,0 +1,1 @@
+ALTER TABLE users ADD COLUMN reputation INTEGER DEFAULT 0;

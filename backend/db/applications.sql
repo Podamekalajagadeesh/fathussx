@@ -1,0 +1,15 @@
+CREATE TABLE applications (
+  id SERIAL PRIMARY KEY,
+  gig_id INTEGER NOT NULL REFERENCES gigs(id) ON DELETE CASCADE,
+  user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  status VARCHAR(50) DEFAULT 'pending',
+  message TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE(gig_id, user_id)
+);
+
+CREATE TRIGGER update_application_updated_at
+BEFORE UPDATE ON applications
+FOR EACH ROW
+EXECUTE FUNCTION update_updated_at_column();

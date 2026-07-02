@@ -1,0 +1,22 @@
+.my-courses-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.my-courses-container h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.no-courses {
+  text-align: center;
+  padding: 3rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.no-courses p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}

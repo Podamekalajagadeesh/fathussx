@@ -1,0 +1,23 @@
+.badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.badge i {
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+.badge-info {
+  display: flex;
+  flex-direction: column;
+}

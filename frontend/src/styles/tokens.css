@@ -1,0 +1,51 @@
+:root {
+  /* Color scale */
+  --background-color: #ffffff;
+  --text-color: #212529;
+  --card-bg: #f8f9fa;
+  --border-color: #dee2e6;
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --heading-color: #2c3e50;
+
+  /* Aliases used in other files (compatibility) */
+  --color-bg: var(--background-color);
+  --color-text: var(--text-color);
+  --color-card-bg: var(--card-bg);
+  --color-border: var(--border-color);
+  --color-primary: var(--primary-color);
+  --color-primary-hover: var(--primary-hover);
+  --color-heading: var(--heading-color);
+
+  /* Spacing */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.5rem;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  /* Other tokens */
+  --shadow-sm: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+[data-theme='dark'] {
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --card-bg: #1e1e1e;
+  --border-color: #333333;
+  --primary-color: #00aaff;
+  --primary-hover: #0056b3;
+  --heading-color: #e0e0e0;
+
+  /* maintain aliases */
+  --color-bg: var(--background-color);
+  --color-text: var(--text-color);
+  --color-card-bg: var(--card-bg);
+  --color-border: var(--border-color);
+  --color-primary: var(--primary-color);
+  --color-primary-hover: var(--primary-hover);
+}
