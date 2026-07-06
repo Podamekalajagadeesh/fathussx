@@ -1,0 +1,175 @@
+.navbar {
+  background: var(--color-card-bg);
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.25s;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  /* Corresponds to #root max-width */
+  max-width: 1280px;
+  padding: 0 var(--spacing-4);
+}
+
+.navbar-logo {
+  color: var(--color-text);
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: var(--color-text);
+  margin-right: var(--spacing-3);
+}
+
+.search-form {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  padding: 0 var(--spacing-5);
+}
+
+.search-input {
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: 1rem;
+  width: 100%;
+  max-width: 400px;
+  transition: all 0.25s ease-in-out;
+}
+
+.search-input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 var(--spacing-3);
+  height: 100%;
+  cursor: pointer;
+  transition: color 0.25s, border-color 0.25s;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-links:hover {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+/* Standardizes the button in the nav with global button styles */
+.nav-links-button {
+  /* Inherits from global button styles, with specific overrides */
+  background-color: var(--color-primary);
+  color: var(--color-bg-light); /* Ensure text is light on primary background */
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.25s;
+  text-decoration: none;
+  font-weight: 500;
+  font-family: inherit;
+  font-size: 1em;
+}
+
+.nav-links-button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-text);
+  margin-left: var(--spacing-3);
+  display: flex;
+  align-items: center;
+}
+
+.nav-links-button:focus,
+.nav-links:focus,
+.nav-hamburger:focus,
+.theme-toggle-btn:focus {
+  outline: 3px solid rgba(37,99,235,0.18);
+  outline-offset: 2px;
+}
+
+/* Responsive: collapse nav into hamburger */
+@media (max-width: 880px) {
+  .search-form {
+    display: none;
+  }
+
+  .nav-hamburger {
+    display: block;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 4rem;
+    right: 0;
+    background: var(--color-card-bg);
+    width: 100%;
+    max-width: 360px;
+    transform: translateX(100%);
+    transition: transform 0.2s ease-in-out;
+    flex-direction: column;
+    padding: var(--spacing-4);
+    box-shadow: var(--shadow-sm);
+    display: none;
+  }
+
+  .nav-menu.open {
+    display: flex;
+    transform: translateX(0);
+  }
+
+  .nav-item {
+    width: 100%;
+    margin: 0.4rem 0;
+  }
+
+  .nav-links {
+    padding: 0.75rem 0.5rem;
+    width: 100%;
+  }
+}

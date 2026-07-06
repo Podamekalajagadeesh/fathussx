@@ -1,0 +1,89 @@
+.notifications-container {
+  position: relative;
+}
+
+.notifications-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  position: relative;
+}
+
+.unread-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  padding: 0.2em 0.5em;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.notifications-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  width: 350px;
+  max-height: 400px;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.notifications-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.notifications-header h3 {
+  margin: 0;
+}
+
+.notifications-list {
+  padding: 0;
+  margin: 0;
+}
+
+.notification-item {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-item.unread {
+  background-color: var(--background-color-light);
+}
+
+.notification-item:hover {
+  background-color: var(--background-color-hover);
+}
+
+.notification-item p {
+  margin: 0 0 0.5rem;
+}
+
+.notification-item strong {
+  text-transform: capitalize;
+}
+
+.notification-time {
+  font-size: 0.8rem;
+  color: var(--text-color-secondary);
+}
+
+.no-notifications {
+  padding: 1rem;
+  text-align: center;
+  color: var(--text-color-secondary);
+}

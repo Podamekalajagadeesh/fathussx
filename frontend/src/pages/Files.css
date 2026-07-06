@@ -1,0 +1,40 @@
+.files-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.file-uploader-container {
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.upload-message {
+  margin: 0;
+  font-weight: 500;
+}
+
+.file-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.file-item {
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.file-item a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: 500;
+}

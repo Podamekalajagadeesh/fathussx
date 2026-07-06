@@ -1,0 +1,7 @@
+CREATE TABLE user_projects (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  name VARCHAR(255) NOT NULL,
+  url VARCHAR(255) NOT NULL,
+  description TEXT
+);

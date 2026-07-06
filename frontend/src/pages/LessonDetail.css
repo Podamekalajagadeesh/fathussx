@@ -1,0 +1,40 @@
+.lesson-detail-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.lesson-content {
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.quiz-option {
+  margin-bottom: 1rem;
+}
+
+.quiz-option label {
+  margin-left: 0.5rem;
+}
+
+.correct {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.incorrect {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.completion-message {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f4f7f9;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.completion-message h3 {
+  color: #28a745;
+}

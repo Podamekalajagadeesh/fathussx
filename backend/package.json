@@ -1,0 +1,37 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test jest",
+    "start": "node index.js",
+    "test:db:reset": "cross-env NODE_ENV=test node db/reset-db.js",
+    "seed:mvp": "node db/seed-mvp.js",
+    "setup": "npm install && npm run test:db:reset && npm run seed:mvp"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.17.0",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.1.1",
+    "openai": "^6.42.0",
+    "passport": "^0.7.0",
+    "passport-github2": "^0.1.12",
+    "passport-google-oauth20": "^2.0.0",
+    "pg": "^8.21.0",
+    "socket.io": "^4.8.3",
+    "stripe": "^22.2.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^30.4.2",
+    "supertest": "^7.2.2"
+  }
+}

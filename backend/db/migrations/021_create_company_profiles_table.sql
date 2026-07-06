@@ -1,0 +1,9 @@
+CREATE TABLE company_profiles (
+  id SERIAL PRIMARY KEY,
+  employer_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  name VARCHAR(255) NOT NULL,
+  description TEXT,
+  website VARCHAR(255),
+  logo VARCHAR(255),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);

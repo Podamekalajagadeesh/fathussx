@@ -1,0 +1,8 @@
+CREATE TABLE job_applications (
+  id SERIAL PRIMARY KEY,
+  job_id INTEGER REFERENCES jobs(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  cover_letter TEXT,
+  status VARCHAR(50) DEFAULT 'submitted',
+  applied_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
