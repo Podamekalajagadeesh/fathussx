@@ -2,34 +2,42 @@
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { SiteNav } from "@/components/site-nav";
+import { useAuth } from "@/components/auth-context";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState<{ type: "success" | "error"; message: string } | null>(null);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const { login } = useAuth();
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setLoading(true);
     setStatus(null);
 
-    const response = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
+    try {
+      const user = await login(email, password);
 
-    const data = await response.json();
-    setLoading(false);
+      if (!user) {
+        setStatus({ type: "error", message: "Login failed. Please try again." });
+        return;
+      }
 
-    if (!response.ok) {
-      setStatus({ type: "error", message: data.error || "Login failed" });
-      return;
+      setStatus({
+        type: "success",
+        message: user.name || user.email ? `Welcome back, ${user.name || user.email}!` : "Welcome back!",
+      });
+      router.push("/dashboard");
+    } catch (error) {
+      setStatus({ type: "error", message: "Login failed. Please try again." });
+      console.error("Login error", error);
+    } finally {
+      setLoading(false);
     }
-
-    setStatus({ type: "success", message: `Welcome back, ${data.user.name || data.user.email}!` });
   }
 
   return (

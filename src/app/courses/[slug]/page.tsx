@@ -3,15 +3,25 @@ import { notFound } from "next/navigation";
 import { SiteNav } from "@/components/site-nav";
 import { CourseDetailClient } from "@/components/course-detail-client";
 import { prisma } from "@/lib/db";
+import { ensureDefaultCourses } from "@/lib/seed-data";
+
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const courses = await prisma.course.findMany({ select: { slug: true } });
-  return courses.map((course) => ({ slug: course.slug }));
+  return courses.map((course: { slug: string }) => ({ slug: course.slug }));
 }
 
-export default async function CourseDetailPage({ params }: { params: { slug: string } }) {
+export default async function CourseDetailPage({ params }: { params: { slug?: string } }) {
+  const slug = params.slug;
+  if (!slug) {
+    notFound();
+  }
+
+  await ensureDefaultCourses(prisma);
+
   const course = await prisma.course.findUnique({
-    where: { slug: params.slug },
+    where: { slug },
   });
 
   if (!course) {

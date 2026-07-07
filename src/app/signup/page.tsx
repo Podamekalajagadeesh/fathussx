@@ -2,9 +2,14 @@
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { SiteNav } from "@/components/site-nav";
+import { useAuth } from "@/components/auth-context";
+import { buildApiUrl, readJsonResponse } from "@/lib/http";
 
 export default function SignupPage() {
+  const { login } = useAuth();
+  const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,21 +21,33 @@ export default function SignupPage() {
     setLoading(true);
     setStatus(null);
 
-    const response = await fetch("/api/auth/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password }),
-    });
+    try {
+      const response = await fetch(buildApiUrl("/api/auth/register"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
 
-    const data = await response.json();
-    setLoading(false);
+      const data = await readJsonResponse<{ error?: string; user?: { name?: string | null; email?: string } }>(response);
+      setLoading(false);
 
-    if (!response.ok) {
-      setStatus({ type: "error", message: data.error || "Registration failed" });
-      return;
+      if (!response.ok) {
+        setStatus({ type: "error", message: data?.error || "Registration failed" });
+        return;
+      }
+
+      const successMessage = data?.user?.name || data?.user?.email
+        ? `Account created for ${data.user.name || data.user.email}!`
+        : "Account created successfully!";
+
+      setStatus({ type: "success", message: successMessage });
+      await login(email, password);
+      router.push("/dashboard");
+    } catch (error) {
+      setLoading(false);
+      setStatus({ type: "error", message: "Registration failed. Please try again." });
+      console.error("Signup error", error);
     }
-
-    setStatus({ type: "success", message: `Account created for ${data.user.name || data.user.email}!` });
   }
 
   return (

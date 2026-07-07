@@ -39,6 +39,34 @@ export async function POST(request: Request) {
   return NextResponse.json({ enrollment }, { status: 201 });
 }
 
+export async function PATCH(request: Request) {
+  const body = await request.json();
+  const { userId, courseId } = body;
+
+  if (!userId || !courseId) {
+    return NextResponse.json({ error: "userId and courseId required" }, { status: 400 });
+  }
+
+  const enrollment = await prisma.enrollment.findFirst({
+    where: { userId, courseId },
+  });
+
+  if (!enrollment) {
+    return NextResponse.json({ error: "Enrollment not found" }, { status: 404 });
+  }
+
+  if (enrollment.status === "completed") {
+    return NextResponse.json({ enrollment }, { status: 200 });
+  }
+
+  const updatedEnrollment = await prisma.enrollment.update({
+    where: { id: enrollment.id },
+    data: { status: "completed" },
+  });
+
+  return NextResponse.json({ enrollment: updatedEnrollment });
+}
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const userId = searchParams.get("userId");

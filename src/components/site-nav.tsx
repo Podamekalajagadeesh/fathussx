@@ -37,11 +37,29 @@ export function SiteNav() {
             <Link href="/dashboard" className="text-sm text-slate-300 transition hover:text-white">
               Dashboard
             </Link>
+            <Link href="/profile" className="text-sm text-slate-300 transition hover:text-white">
+              Profile
+            </Link>
+            <Link href="/achievements" className="text-sm text-slate-300 transition hover:text-white">
+              Achievements
+            </Link>
+            <Link href="/community" className="text-sm text-slate-300 transition hover:text-white">
+              Community
+            </Link>
+            <Link href="/leaderboard" className="text-sm text-slate-300 transition hover:text-white">
+              Leaderboard
+            </Link>
+            <Link href="/tutor" className="text-sm text-slate-300 transition hover:text-white">
+              Tutor
+            </Link>
+            <Link href="/notifications" className="text-sm text-slate-300 transition hover:text-white">
+              Notifications
+            </Link>
             <button
               onClick={logout}
               className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-400/20"
             >
-              Sign out
+              Logout
             </button>
           </>
         ) : (
