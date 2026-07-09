@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { SiteNav } from "@/components/site-nav";
-import { plans } from "@/lib/mock-data";
+import { plans } from "@/lib/pricing";
 
 export default function PricingPage() {
   const [selected, setSelected] = useState(plans[0].name);

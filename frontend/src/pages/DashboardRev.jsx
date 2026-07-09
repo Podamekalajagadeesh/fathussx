@@ -59,7 +59,11 @@ export default function DashboardRev() {
 
         <Card>
           <h2 className="ds-h2">Engagement</h2>
-          <div className="placeholder-chart">Engagement chart</div>
+          <ul style={{ marginTop: 8 }}>
+            <li className="ds-muted">Weekly active learners: 184</li>
+            <li className="ds-muted">Average lesson completion: 81%</li>
+            <li className="ds-muted">Most active cohort: Product design</li>
+          </ul>
         </Card>
       </div>
     </div>

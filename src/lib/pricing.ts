@@ -69,19 +69,19 @@ export const plans = [
   {
     name: "Starter",
     price: "$19",
-    description: "For independent learners building a strong foundation.",
-    features: ["Access to 3 core courses", "Weekly study plans", "Community chat"],
+    description: "For self-paced learners who want a structured study routine and daily progress support.",
+    features: ["Access to 3 core courses", "Weekly study plans", "Community discussion space"],
   },
   {
     name: "Pro",
     price: "$49",
-    description: "For ambitious learners who want live guidance and certificates.",
-    features: ["All courses", "Weekly live sessions", "AI mentor access"],
+    description: "For learners who want mentor feedback, live sessions, and verified certificates.",
+    features: ["Full course library", "Weekly live sessions", "AI mentor access"],
   },
   {
     name: "Campus",
     price: "Custom",
-    description: "For schools and universities that need broad deployment.",
+    description: "For schools and training teams that need reporting, onboarding, and shared learning spaces.",
     features: ["Bulk licenses", "Admin dashboard", "Priority support"],
   },
 ];

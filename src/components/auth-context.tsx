@@ -49,16 +49,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
       const data = await response.json();
 
-      if (!response.ok) {
+      if (!response.ok || !data?.user) {
         return null;
       }
 
-      const loggedInUser = (data.user ?? {
-        id: data.user?.id ?? "local-user",
-        name: data.user?.name ?? email.split("@")[0],
-        email,
-      }) as User;
-
+      const loggedInUser = data.user as User;
       setUser(loggedInUser);
       if (typeof window !== "undefined") {
         window.localStorage.setItem(STORAGE_KEY, JSON.stringify(loggedInUser));

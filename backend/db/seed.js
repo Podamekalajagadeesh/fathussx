@@ -78,7 +78,7 @@ const seed = async () => {
       ]
     );
 
-    console.log('Inserted all sample projects and tasks.');
+    console.log('Inserted starter learning projects and tasks.');
     console.log('Database seeding complete!');
   } catch (err) {
     console.error('Error seeding database:', err);

@@ -110,11 +110,10 @@ const Dashboard = () => {
           {dashboardData && renderProgress()}
         </div>
         
-        {/* Add more widgets here as the app grows */}
         <div className="dashboard-widget card">
           <h2>My Achievements</h2>
           <div className="empty-state">
-            <p>Achievements are coming soon!</p>
+            <p>Complete your first course to unlock badges and certificates.</p>
           </div>
         </div>
 

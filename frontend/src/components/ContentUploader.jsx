@@ -4,34 +4,48 @@ import PropTypes from 'prop-types';
 
 const ContentUploader = ({ onUpload }) => {
   const [file, setFile] = useState(null);
+  const [status, setStatus] = useState('');
+  const [isUploading, setIsUploading] = useState(false);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
+    setStatus('');
   };
 
   const handleUpload = async () => {
+    if (!file) {
+      setStatus('Select a file to upload.');
+      return;
+    }
+
     const formData = new FormData();
     formData.append('file', file);
 
     try {
-      // This is a placeholder for the actual upload endpoint
-      // In a real application, this would upload to S3 or a similar service
-      // and then you would create the content record with the URL
+      setIsUploading(true);
+      setStatus('Uploading file…');
       const res = await api.post('/api/files/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
       onUpload(res.data.filePath);
+      setStatus('File uploaded successfully.');
     } catch (err) {
-      console.error('Failed to upload file.');
+      console.error('Failed to upload file.', err);
+      setStatus('Upload failed. Please try again.');
+    } finally {
+      setIsUploading(false);
     }
   };
 
   return (
     <div>
       <input type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Upload</button>
+      <button onClick={handleUpload} disabled={isUploading}>
+        {isUploading ? 'Uploading…' : 'Upload'}
+      </button>
+      {status ? <p>{status}</p> : null}
     </div>
   );
 };

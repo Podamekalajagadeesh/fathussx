@@ -1,19 +1,20 @@
-// This is a mock blockchain service for simulation purposes.
-// In a real application, this would interact with a smart contract on a blockchain.
+const crypto = require('crypto');
 
 const mintNftCertificate = async (user, course) => {
-  console.log(`Minting NFT for user ${user.id} for course ${course.id}`);
+  console.log(`Issuing certificate for user ${user.id} for course ${course.id}`);
 
-  // Simulate a delay for the minting process
-  await new Promise(resolve => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 1200));
 
-  // Generate a fake transaction hash and token ID
-  const transactionHash = '0x' + [...Array(64)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
-  const tokenId = Math.floor(Math.random() * 1000000).toString();
+  const seed = `${user.id}:${course.id}:${Date.now()}`;
+  const transactionHash = crypto.createHash('sha256').update(seed).digest('hex');
+  const certificateId = `CERT-${course.id.slice(0, 6).toUpperCase()}-${Date.now().toString(36).toUpperCase()}`;
 
-  console.log(`NFT minted with transaction hash: ${transactionHash}`);
-
-  return { transactionHash, tokenId };
+  return {
+    status: 'issued',
+    transactionHash,
+    certificateId,
+    issuedAt: new Date().toISOString(),
+  };
 };
 
 module.exports = { mintNftCertificate };
